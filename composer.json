@@ -2,8 +2,8 @@
     "name": "gasparsf/ecommerce",
     "authors": [
         {
-            "name": "Gaspar Ferreira",
-            "email": "gaspar.sf@gmail.com.br"
+            "name": "Hcode",
+            "email": "gaspar.sf@gmail.com"
         }
     ],
     "require": {
@@ -13,7 +13,7 @@
     },
     "autoload": {
         "psr-4": {
-            "": "vendor\\hcodebr\\php-classes\\src"
+            "Hcode\\": "vendor\\hcodebr\\php-classes\\src"
         }
     }
 }
