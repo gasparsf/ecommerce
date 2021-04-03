@@ -1,0 +1,1 @@
+<?php if(!class_exists('Rain\Tpl')){exit;}?><h1>Claudelicias da Clau! Aquela que gosta do meu...</h1>
