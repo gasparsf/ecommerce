@@ -19,7 +19,7 @@ class Model {
 		{
 			// SE FOR MÉTODO GET RETORNA OS VALOR DO CAMPO(iduser) QUE ESTA NO ARRAY $values 
 			case "get":
-				return $this->values[$fieldName]; 		
+				return (isset($this->values[$fieldName])) ? $this->values[$fieldName] : NULL; 		
 			break;
 
 			// SE FOR MÉTODO SET ARMAZENA NO CAMPO INDICADO A PRIMEIRA POSIÇÃO DO ARRAY $args;
