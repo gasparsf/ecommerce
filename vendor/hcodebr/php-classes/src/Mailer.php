@@ -11,7 +11,11 @@ use PHPMailer;
 class Mailer {
 
 	const USERNAME = "gaspar.sf@gmail.com";
+<<<<<<< HEAD
 	const PASSWORD = ""; // COLOCAR SENHA
+=======
+	const PASSWORD = "";
+>>>>>>> a7db9ced7ae969611b3e9cc84213cb2f170ec89d
 	const NAME_FROM = "Hcode Store";
 
 	private $mail;
