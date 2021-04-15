@@ -38,7 +38,7 @@ class User extends Model {
 			!$_SESSION[User::SESSION]
 			||
 			!(int)$_SESSION[User::SESSION]["iduser"] > 0
-		) {
+		) {	
 			//Não está logado
 			return false;
 		} else {
