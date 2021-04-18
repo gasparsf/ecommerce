@@ -341,11 +341,65 @@ $app->post("/checkout", function(){
 		case 2:
 		header("Location: /order/".$order->getidorder()."/paypal");
 		break;
-
 	}
 
 	exit;
+});
 
+// CRIAÇÃO DA ROTA DO LINK ESQUECI A SENHA
+$app->get("/forgot", function() {
+
+	// ESTAS OPÇÕES FORAM CONFIGURADAS NA CLASSE Page QUE EXTENDE DE PageAdmin
+	$page = new Page();
+
+	$page->setTpl("forgot");
+});
+
+// ROTA TIPO POST PARA ENVIO DO FORMULARIO
+$app->post("/forgot", function(){
+
+	$user = User::getForgot($_POST["email"], false);
+
+	header("Location: /forgot/sent");
+	exit;
+});
+
+$app->get("/forgot/sent", function() {
+
+	$page = new Page();
+
+	$page->setTpl("forgot-sent");
+});
+
+$app->get("/forgot/reset", function(){
+	// VALIDAR O CÓDIGO RECEBIDO
+	$user = User::validForgotDecrypt($_GET["code"]);
+
+	$page = new Page();
+	// VALIDA O CÓDIGO ENCRIPTADO NA PÁGINA DE RESET
+	$page->setTpl("forgot-reset", array(
+		"name"=>$user["desperson"],
+		"code"=>$_GET["code"]
+	));
+});
+
+$app->post("/forgot/reset", function(){
+
+	$forgot = User::validForgotDecrypt($_POST["code"]);	
+
+	User::setForgotUsed($forgot["idrecovery"]);
+
+	$user = new User();
+
+	$user->get((int)$forgot["iduser"]);
+
+	$password = User::getPasswordHash($_POST["password"]);
+
+	$user->setPassword($password);
+
+	$page = new Page();
+
+	$page->setTpl("forgot-reset-success");
 });
 
 ?>
