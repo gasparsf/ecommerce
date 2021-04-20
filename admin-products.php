@@ -7,18 +7,16 @@ use \Hcode\Model\Product;
 $app->get("/admin/products", function(){
 
 	User::verifyLogin();
-	/*
+	
 	$search = (isset($_GET['search'])) ? $_GET['search'] : "";
 	$page = (isset($_GET['page'])) ? (int)$_GET['page'] : 1;
 
 	if ($search != '') {
 
 		$pagination = Product::getPageSearch($search, $page);
-
 	} else {
 
 		$pagination = Product::getPage($page);
-
 	}
 
 	$pages = [];
@@ -33,9 +31,8 @@ $app->get("/admin/products", function(){
 			]),
 			'text'=>$x+1
 		]);
-
 	}
-	*/
+	
 	$products = Product::listAll();
 
 	$page = new PageAdmin();
